@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+  <style type="text/css">
+    #meter1 {
+      border: 1px solid #000;
+      width: 240px;
+       margin: 10px
+    }
+    
+    #progress1 {
+      height: 50px;
+      width: 50px
+    }
+    
+    #meter2 {
+      border: 1px solid #000;
+      width: 240px;
+       margin: 10px
+    }
+    
+    #progress2 {
+      height: 50px;
+      width: 50px
+    }
+    
+    #meter3 {
+      border: 1px solid #000;
+      width: 240px;
+       margin: 10px
+    }
+    
+    #progress3 {
+      height: 50px;
+      width: 50px
+    }
+  </style>
+
+  <title></title>
+
+
+</head>
+
+<body>
+  <div id='meter1'>
+    <div id='progress1'></div>
+  </div>
+  <div id='meter2'>
+    <div id='progress2'></div>
+  </div>
+  <div id='meter3'>
+    <div id='progress3'></div>
+  </div>
+  <div style="margin: 10px">
+  <select id="ddlViewBy" name="ddlViewBy" >
+    <option value="progress1">progress1</option>
+    <option value="progress2">progress2</option>
+    <option value="progress3">progress3</option>
+  </select>
+  <button onclick="increase(10)">+10</button>
+  <button onclick="increase(25)">+25</button>
+  <button onclick="decrease(10)">-10</button>
+  <button onclick="decrease(25)">-25</button>
+</div>
+
+
+  <script type='text/javascript'>
+    //<![CDATA[
+
+    var value = 0;
+    var b1 = 0;
+    var b2 = 0;
+    var b3 = 0;
+
+    progress = document.getElementById(document.getElementById("ddlViewBy").value);
+
+
+    function increase(inc) {
+      progress.innerHTML = "";
+      //alert(document.getElementById("ddlViewBy").value);
+      progress = document.getElementById(document.getElementById("ddlViewBy").value);
+
+      if (document.getElementById("ddlViewBy").value == 'progress1') {
+        value = b1;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress2') {
+        value = b2;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress3') {
+        value = b3;
+      }
+
+
+      value = value + 1 * inc;
+      if (value > 250){
+          value = 250;
+          progress.innerHTML = "<span style='font-size:30px; display: block; margin: 0px auto; text-align: center;'>" + value + "% </span>";
+                progress.style.backgroundColor  = "pink";
+
+      }
+      else{
+        if (value < 100) {
+          progress.style.width = value + "%";
+          progress.text = value + "%";
+          progress.style.backgroundColor  = "lightblue";
+          progress.innerHTML = "<span style='font-size:30px; display: block; margin: 0px auto; text-align: center;'>" + value + "% </span>";
+          
+        } else {
+              progress.style.width = 100 + "%";
+              progress.innerHTML = "<span style='font-size:30px; display: block; margin: 0px auto; text-align: center;'>" + value + "% </span>";
+              progress.style.backgroundColor  = "pink";
+
+        }
+
+      if (document.getElementById("ddlViewBy").value == 'progress1') {
+        b1 = value;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress2') {
+        b2 = value;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress3') {
+        b3 = value;
+      }
+      }
+      
+    }
+
+    function decrease(dec) {
+      progress.innerHTML = "";
+      progress = document.getElementById(document.getElementById("ddlViewBy").value);
+      //progress = document.getElementById ("progress1");
+      if (document.getElementById("ddlViewBy").value == 'progress1') {
+        value = b1;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress2') {
+        value = b2;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress3') {
+        value = b3;
+      }
+
+
+      value = value - 1 * dec;
+      if (value <= 0) 
+        value = 0;
+      
+        if(value <= 100){
+          progress.style.width = value + "%";
+          progress.style.backgroundColor  = "lightblue";
+        }
+      progress.innerHTML = "<span style='font-size:30px;display: block; margin: 0px auto; text-align: center;'>" + value + "% </span>";
+      if (document.getElementById("ddlViewBy").value == 'progress1') {
+        b1 = value;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress2') {
+        b2 = value;
+      }
+      if (document.getElementById("ddlViewBy").value == 'progress3') {
+        b3 = value;
+      }
+
+    }
+
+    //]]>
+  </script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent) {
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "sjfsL35o"
+      }], "*")
+    }
+  </script>
+
+</body>
+
+</html>
